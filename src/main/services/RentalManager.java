@@ -6,13 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalManager {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> availableCars;
+
+    public RentalManager() {
+        availableCars = new ArrayList<>();
+    }
 
     public void addCar(Car car) {
-        cars.add(car);
+        availableCars.add(car);
     }
 
     public List<Car> getAvailableCars() {
-        return cars; // Return all cars for simplicity
+        return availableCars;
     }
 }

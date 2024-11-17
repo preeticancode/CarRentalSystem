@@ -1,26 +1,24 @@
 package models;
 
-public abstract sealed class Car permits ElectricCar, SUV {
+public abstract class Car {
     private String model;
-    private String licensePlate;
+    private String registrationNumber;
 
-    public Car(String model, String licensePlate) {
+    public Car(String model, String registrationNumber) {
         this.model = model;
-        this.licensePlate = licensePlate;
+        this.registrationNumber = registrationNumber;
     }
 
     public String getModel() {
         return model;
     }
 
-    public String getLicensePlate() {
-        return licensePlate;
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
-
-    public abstract double calculateRentalPrice();
 
     @Override
     public String toString() {
-        return "Car[model=" + model + ", licensePlate=" + licensePlate + "]";
+        return "Car model: " + model + ", Registration Number: " + registrationNumber;
     }
 }

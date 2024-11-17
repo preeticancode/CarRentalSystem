@@ -1,15 +1,19 @@
 package models;
 
-public final class SUV extends Car {
-    private boolean allWheelDrive;
+public class SUV extends Car {
+    private boolean isFourWheelDrive;
 
-    public SUV(String model, String licensePlate, boolean allWheelDrive) {
-        super(model, licensePlate);
-        this.allWheelDrive = allWheelDrive;
+    public SUV(String model, String registrationNumber, boolean isFourWheelDrive) {
+        super(model, registrationNumber);
+        this.isFourWheelDrive = isFourWheelDrive;
+    }
+
+    public boolean isFourWheelDrive() {
+        return isFourWheelDrive;
     }
 
     @Override
-    public double calculateRentalPrice() {
-        return allWheelDrive ? 100 : 75; // Example price based on AWD
+    public String toString() {
+        return super.toString() + ", Four-Wheel Drive: " + isFourWheelDrive;
     }
 }
