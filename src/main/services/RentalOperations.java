@@ -1,4 +1,4 @@
-package main.models.services;
+package main.services;
 
 public class RentalOperations {
     
