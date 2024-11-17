@@ -1,9 +1,4 @@
-package main.services;
-
-public class RentalManager {
-    
-}
-package main.services;
+package services;
 
 import models.Car;
 
