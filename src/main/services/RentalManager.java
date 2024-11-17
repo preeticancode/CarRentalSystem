@@ -3,7 +3,7 @@ package main.models.services;
 public class RentalManager {
     
 }
-package services;
+package main.services;
 
 import models.Car;
 
