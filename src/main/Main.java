@@ -2,6 +2,7 @@ package main;
 
 import services.RentalManager;
 import models.*;
+import java.util.List;  // Add this import for List
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +15,6 @@ public class Main {
         rentalManager.addCar(suv);
 
         List<Car> availableCars = rentalManager.getAvailableCars();
-        availableCars.forEach(System.out::println);
+        availableCars.forEach(System.out::println);  // This will print each car's details
     }
 }
