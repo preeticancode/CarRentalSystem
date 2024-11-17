@@ -2,38 +2,25 @@ package models;
 
 public abstract sealed class Car permits ElectricCar, SUV {
     private String model;
-    private String registrationNumber;
-    private CarStatus status;
+    private String licensePlate;
 
-    // Constructor using this()
-    public Car(String model, String registrationNumber) {
-        this();
+    public Car(String model, String licensePlate) {
         this.model = model;
-        this.registrationNumber = registrationNumber;
-        this.status = CarStatus.AVAILABLE;
+        this.licensePlate = licensePlate;
     }
 
-    public Car() {
-        this.status = CarStatus.AVAILABLE; // Default status
-    }
-
-    // Getter and setter methods
     public String getModel() {
         return model;
     }
 
-    public String getRegistrationNumber() {
-        return registrationNumber;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public CarStatus getStatus() {
-        return status;
-    }
+    public abstract double calculateRentalPrice();
 
-    public void setStatus(CarStatus status) {
-        this.status = status;
+    @Override
+    public String toString() {
+        return "Car[model=" + model + ", licensePlate=" + licensePlate + "]";
     }
-
-    // Abstract method to be implemented by subclasses
-    public abstract double calculateRentalPrice(int days);
 }
