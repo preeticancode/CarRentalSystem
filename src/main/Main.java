@@ -4,6 +4,11 @@ import services.RentalManager;
 import models.*;
 import java.util.List;
 
+import models.Car;
+import models.ElectricCar;
+import models.SUV;
+
+
 public class Main {
     public static void main(String[] args) {
         RentalManager rentalManager = new RentalManager();
