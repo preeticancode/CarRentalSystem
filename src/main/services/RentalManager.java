@@ -6,17 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalManager {
-    private List<Car> availableCars;
-
-    public RentalManager() {
-        availableCars = new ArrayList<>();
-    }
+    private final List<Car> cars = new ArrayList<>();
 
     public void addCar(Car car) {
-        availableCars.add(car);
+        cars.add(car);
     }
 
     public List<Car> getAvailableCars() {
-        return availableCars;
+        return new ArrayList<>(cars); // Defensive copying
     }
 }

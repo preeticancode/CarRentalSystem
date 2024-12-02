@@ -1,15 +1,11 @@
 package models;
 
-public class ElectricCar extends Car {
-    private double batteryCapacity;
+public final class ElectricCar extends Car {
+    private final double batteryCapacity;
 
-    public ElectricCar(String model, String registrationNumber, double batteryCapacity) {
-        super(model, registrationNumber);
+    public ElectricCar(String model, String licensePlate, double batteryCapacity) {
+        super(model, licensePlate);
         this.batteryCapacity = batteryCapacity;
-    }
-
-    public double getBatteryCapacity() {
-        return batteryCapacity;
     }
 
     @Override

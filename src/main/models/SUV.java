@@ -1,15 +1,11 @@
 package models;
 
-public class SUV extends Car {
-    private boolean isFourWheelDrive;
+public final class SUV extends Car {
+    private final boolean isFourWheelDrive;
 
-    public SUV(String model, String registrationNumber, boolean isFourWheelDrive) {
-        super(model, registrationNumber);
+    public SUV(String model, String licensePlate, boolean isFourWheelDrive) {
+        super(model, licensePlate);
         this.isFourWheelDrive = isFourWheelDrive;
-    }
-
-    public boolean isFourWheelDrive() {
-        return isFourWheelDrive;
     }
 
     @Override
