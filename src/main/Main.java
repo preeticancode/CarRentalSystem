@@ -1,57 +1,72 @@
 package main;
 
-import models.*;
 import services.RentalManager;
+import models.Car;
+import models.ElectricCar;
+import models.SUV;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         RentalManager rentalManager = new RentalManager();
-        rentalManager.welcomeMessage();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("\nCar Rental System");
             System.out.println("1. Add a Car");
             System.out.println("2. View Available Cars");
-            System.out.println("3. Show Electric Cars");
-            System.out.println("4. Show SUVs with 4WD");
-            System.out.println("5. Exit");
+            System.out.println("3. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
-                case 1 -> {
-                    System.out.print("Enter car type (ELECTRIC/SUV): ");
-                    String type = scanner.nextLine().toUpperCase();
-                    System.out.print("Enter model: ");
-                    String model = scanner.nextLine();
-                    System.out.print("Enter registration: ");
-                    String registration = scanner.nextLine();
-                    System.out.print("Enter rental rate: ");
-                    double rate = scanner.nextDouble();
+                case 1:
+                    System.out.print("Enter car type (1: ElectricCar, 2: SUV): ");
+                    int carType = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
 
-                    if (type.equals("ELECTRIC")) {
-                        rentalManager.addCar(new ElectricCar(model, registration, rate));
-                    } else if (type.equals("SUV")) {
-                        System.out.print("Has 4WD (true/false): ");
-                        boolean has4WD = scanner.nextBoolean();
-                        rentalManager.addCar(new SUV(model, registration, rate, has4WD));
+                    System.out.print("Enter car name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter car license plate: ");
+                    String licensePlate = scanner.nextLine();
+
+                    if (carType == 1) {
+                        System.out.print("Enter battery capacity (in kWh): ");
+                        double batteryCapacity = scanner.nextDouble();
+                        scanner.nextLine(); // Consume newline
+                        rentalManager.addCar(new ElectricCar(name, licensePlate, batteryCapacity));
+                    } else if (carType == 2) {
+                        System.out.print("Is it a four-wheel drive (true/false)? ");
+                        boolean fourWheelDrive = scanner.nextBoolean();
+                        scanner.nextLine(); // Consume newline
+                        rentalManager.addCar(new SUV(name, licensePlate, fourWheelDrive));
                     } else {
                         System.out.println("Invalid car type!");
                     }
-                }
-                case 2 -> rentalManager.showAvailableCars();
-                case 3 -> rentalManager.showElectricCars();
-                case 4 -> rentalManager.showSUVs();
-                case 5 -> {
+                    break;
+
+                case 2:
+                    List<Car> availableCars = rentalManager.getAvailableCars();
+                    if (availableCars.isEmpty()) {
+                        System.out.println("No available cars.");
+                    } else {
+                        System.out.println("Available Cars:");
+                        availableCars.forEach(System.out::println);
+                    }
+                    break;
+
+                case 3:
                     System.out.println("Exiting... Goodbye!");
+                    scanner.close();
                     return;
-                }
-                default -> System.out.println("Invalid option. Try again.");
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
             }
         }
     }
