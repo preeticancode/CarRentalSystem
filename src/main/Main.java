@@ -1,10 +1,7 @@
 package main;
 
-import services.RentalManager;
-import models.Car;
-import models.Customer;
-
 import java.util.Scanner;
+import services.RentalManager;
 
 public class Main {
     public static void main(String[] args) {

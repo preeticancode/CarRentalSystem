@@ -1,9 +1,8 @@
 package utils;
 
+import java.time.LocalDate;
 import models.Car;
 import models.Customer;
-
-import java.time.LocalDate;
 
 public final class RentalTransaction {
     private final Car car;

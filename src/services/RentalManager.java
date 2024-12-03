@@ -1,12 +1,10 @@
 package services;
 
-import models.*;
-import utils.RentalTransaction;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
+import models.*;
+import utils.RentalTransaction;
 
 public class RentalManager {
     private final List<Car> availableCars = new ArrayList<>();
@@ -28,6 +26,7 @@ public class RentalManager {
         System.out.print("Enter car license plate: ");
         String licensePlate = scanner.nextLine();
 
+        // Make sure to check for valid car type and proceed accordingly
         if (carType == 1) {
             System.out.print("Enter battery capacity (in kWh): ");
             double batteryCapacity = scanner.nextDouble();
@@ -42,7 +41,13 @@ public class RentalManager {
     }
 
     public void displayAvailableCars() {
-        availableCars.forEach(System.out::println);
+        if (availableCars.isEmpty()) {
+            System.out.println("No cars available.");
+        } else {
+            availableCars.stream()
+                .filter(car -> car.getStatus() == CarStatus.AVAILABLE)
+                .forEach(System.out::println);
+        }
     }
 
     public void rentCarInteractive(Scanner scanner) {
