@@ -4,6 +4,10 @@
 
 The **Car Rental System** is a Java-based console application designed to help both administrators and customers manage car rentals. The system enables admins to add new cars, view available cars, and manage rental transactions. Customers can browse available cars, rent them, and return them when they're done.
 
+## UML Diagram
+
+You can view the UML diagram for the Car Rental System [here](diagrams/car_rental_system_uml.png).
+
 ### Key Features:
 - **Car Addition**: Admins can add Electric Cars or SUVs to the system.
 - **Car Rental**: Customers can rent available cars.
